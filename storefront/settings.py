@@ -41,7 +41,9 @@ APPS = [
     'apps.playground',
     'apps.store',
     'apps.tags',
+    'apps.likes',
 ]
+
 THIRD_PARTY_APPS = [
     'debug_toolbar'
 ]
