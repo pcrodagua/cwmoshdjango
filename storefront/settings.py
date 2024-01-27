@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 
 APPS = [
     'apps.playground',
+    'apps.store',
+    'apps.tags',
 ]
 THIRD_PARTY_APPS = [
     'debug_toolbar'
