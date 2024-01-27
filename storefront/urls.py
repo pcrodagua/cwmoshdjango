@@ -19,6 +19,8 @@ from django.urls import path, include
 from apps.playground.urls import urlpatterns as playground_urls
 
 urlpatterns = [
+    #debug
+    path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('', include(playground_urls))
 ]

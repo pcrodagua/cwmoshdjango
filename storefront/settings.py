@@ -40,9 +40,16 @@ INSTALLED_APPS = [
 APPS = [
     'apps.playground',
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'debug_toolbar'
+]
 
 INSTALLED_APPS += APPS
+INSTALLED_APPS += THIRD_PARTY_APPS
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +60,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+THIRD_PARTY_MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+MIDDLEWARE += THIRD_PARTY_MIDDLEWARE
 
 ROOT_URLCONF = 'storefront.urls'
 
@@ -122,3 +134,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
