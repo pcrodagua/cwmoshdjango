@@ -81,43 +81,54 @@ from apps.store.models import Product, Customer, Collection, Order, OrderItem
 #     )
 #     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
 
+# def say_hello(request):
+#     queryset = Customer.objects.annotate(
+#         orders_count=Count('order')
+#     )
+#     discounted_price = ExpressionWrapper(F('unit_price'*0.8, output_field=DecimalField()))
+#     queryset = Customer.objects.annotate(
+#         discounted_price=discounted_price
+#     )
+#     # Customers with their last order id
+#     queryset = Customer.objects.annotate(
+#         last_order_id=Max('order__id')
+#     )
+#     # Collections and count of their products
+#     queryset = Collection.objects.annotate(
+#         products_count=Count('product')
+#     )
+#     # Customers with more than 5 orders
+#     queryset = Customer.objects.annotate(
+#         orders_count=Count('order')
+#     ).filter(orders_count__gt=5)
+#     # Customers and the total amount they've spent
+#     queryset = Customer.objects.annotate(
+#        total_spent=Sum(
+#            F('order__orderitem__quantity') *
+#            F('order__orderitem__unit_price')
+#        )
+#     )
+#     # Top 5 best-selling products and there total sales
+#     queryset = Product.objects.annotate(
+#         total_sales=Sum(
+#             F('orderitem__quantity') *
+#             F('orderitem__unit_price')
+#         )
+#     ).order_by('-total_sales')[:5]
+#
+#     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
+#
+
 def say_hello(request):
-    queryset = Customer.objects.annotate(
-        orders_count=Count('order')
-    )
-    discounted_price = ExpressionWrapper(F('unit_price'*0.8, output_field=DecimalField()))
-    queryset = Customer.objects.annotate(
-        discounted_price=discounted_price
-    )
-    # Customers with their last order id
-    queryset = Customer.objects.annotate(
-        last_order_id=Max('order__id')
-    )
-    # Collections and count of their products
-    queryset = Collection.objects.annotate(
-        products_count=Count('product')
-    )
-    # Customers with more than 5 orders
-    queryset = Customer.objects.annotate(
-        orders_count=Count('order')
-    ).filter(orders_count__gt=5)
-    # Customers and the total amount they've spent
-    queryset = Customer.objects.annotate(
-       total_spent=Sum(
-           F('order__orderitem__quantity') *
-           F('order__orderitem__unit_price')
-       )
-    )
-    # Top 5 best-selling products and there total sales
-    queryset = Product.objects.annotate(
-        total_sales=Sum(
-            F('orderitem__quantity') *
-            F('orderitem__unit_price')
-        )
-    ).order_by('-total_sales')[:5]
+    # aproach 1: add them directly to the variables
+    # collection = Collection()
+    # collection.title = 'Video Games'
+    # collection.save()
+    # aproach 2: use it directly into the collection
+    # collection2 = Collection(
+    #     title='DVDs',
+    #     featured_product=Product(pk=5)
+    # )
+    # collection2.save()
 
     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
-
-
-# def say_hello(request):
-#     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
