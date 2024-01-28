@@ -117,7 +117,7 @@ from apps.store.models import Product, Customer, Collection, Order, OrderItem
 #     ).order_by('-total_sales')[:5]
 #
 #     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
-#
+
 
 def say_hello(request):
     # aproach 1: add them directly to the variables
@@ -130,5 +130,15 @@ def say_hello(request):
     #     featured_product=Product(pk=5)
     # )
     # collection2.save()
+
+    # approach 1: using get
+    collection = Collection.objects.get(pk=1)
+    collection.title = 'Home Collection'
+    collection.save()
+
+    # approach 2: do it using update
+    collection = (Collection.objects.
+                  get(pk=1).update(featured_products=None))
+
 
     return render(request, 'hello.html', context={'name': 'Pablo', 'products': list(products)})
