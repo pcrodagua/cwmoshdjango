@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from apps.playground.urls import urlpatterns as playground_urls
-
+admin.site.site_header = 'Storefront Administration'
+admin.site.index_title = 'Administration Panel'
 urlpatterns = [
     #debug
     path("__debug__/", include("debug_toolbar.urls")),

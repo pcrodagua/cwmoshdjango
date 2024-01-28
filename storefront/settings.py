@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',  # django admin app
     'django.contrib.auth',  # user authentication
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions', # temp memory on server (legacy)
+    'django.contrib.sessions',  # temp memory on server (legacy)
     'django.contrib.messages',  # diplays one time notifications for users
     'django.contrib.staticfiles',  # handles static files on django server
 ]
